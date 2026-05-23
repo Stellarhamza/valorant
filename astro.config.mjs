@@ -10,10 +10,16 @@ import sharp from "sharp";
 import config from "./src/config/config.json";
 import theme from "./src/config/theme.json";
 import {
+  getBlogLastModByPath,
   getSitemapChangeFreq,
   getSitemapLastMod,
   getSitemapPriority,
 } from "./scripts/sitemap-meta.mjs";
+
+const siteUrl = config.site.base_url.replace(/\/$/, "");
+const blogSitemapUrls = Object.keys(getBlogLastModByPath()).map(
+  (pathname) => `${siteUrl}${pathname}`,
+);
 
 // Helper to parse font string format: "FontName:wght@400;500;600;700"
 function parseFontString(fontStr) {
@@ -69,6 +75,7 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
+      customPages: [`${siteUrl}/blog`, ...blogSitemapUrls],
       filter: (page) => {
         const path = new URL(page).pathname;
         return (

@@ -11,7 +11,7 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"node scripts/themeGenerator.js --watch\" \"astro dev\"",
-    "build": "node scripts/themeGenerator.js && node scripts/generate-missing-images.mjs && astro build",
+    "build": "node scripts/themeGenerator.js && node scripts/generate-missing-images.mjs && astro build && node scripts/publish-sitemap.mjs",
     "images:generate": "node scripts/generate-missing-images.mjs",
     "preview": "astro preview",
     "check": "astro check",

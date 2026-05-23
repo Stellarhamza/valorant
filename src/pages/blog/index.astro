@@ -126,6 +126,19 @@ const blogIndexJsonLd = getBlogIndexStructuredData(
                   </h2>
                 </div>
 
+                <nav
+                  class="sr-only"
+                  aria-label="All Valorant cheat guides (sitemap for crawlers)"
+                >
+                  <ul>
+                    {allPosts.map((post) => (
+                      <li>
+                        <a href={`/blog/${post.id}`}>{post.data.title}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+
                 <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                   {allPosts.map((post, index) => (
                     <BlogCard

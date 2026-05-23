@@ -20,4 +20,7 @@ Disallow: /elements
 Disallow: /features
 Disallow: /features/
 
+# Full urlset (all pages including every blog post)
+Sitemap: https://valorantcheat.com/sitemap.xml
+Sitemap: https://valorantcheat.com/sitemap-0.xml
 Sitemap: https://valorantcheat.com/sitemap-index.xml

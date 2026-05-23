@@ -95,7 +95,13 @@ const articleModified = modifiedTime ?? publishedTime;
       rel="sitemap"
       type="application/xml"
       title="Sitemap"
-      href="/sitemap-index.xml"
+      href="/sitemap.xml"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={`${seoConfig.brand_domain} blog`}
+      href="/rss.xml"
     />
 
     <meta name="msapplication-TileColor" content="#86198F" />

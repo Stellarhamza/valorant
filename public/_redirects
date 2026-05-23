@@ -1,9 +1,6 @@
 # www → apex (canonical host)
 https://www.valorantcheat.com/*  https://valorantcheat.com/:splat  301!
 
-# Common sitemap entry points
-/sitemap.xml  /sitemap-index.xml  301
-
 # Legacy Overwatch blog URLs → Valorant guides
 /blog/overwatch-2-cheats-zadeyo-guide     /blog/valorant-cheats-zadeyo-guide  301
 /blog/install-overwatch-esp-windows       /blog/install-valorant-esp-windows  301

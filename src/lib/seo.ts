@@ -305,6 +305,7 @@ export function getBlogArticleStructuredData({
         height: image?.includes("/blog/post-") ? 630 : seo.og_image_height,
       },
       inLanguage: "en-US",
+      isAccessibleForFree: true,
       isPartOf: {
         "@type": "Blog",
         "@id": `${blogUrl}#blog`,
