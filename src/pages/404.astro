@@ -1,0 +1,49 @@
+---
+import Base from "@/layouts/Base.astro";
+---
+
+<Base
+  title="Page Not Found"
+  meta_title="Page Not Found | OverwatchCheats.com"
+  description="This page is not on OverwatchCheats.com. Return home for Overwatch 2 ESP guides or visit Zadeyo.com to purchase."
+  noindex={true}
+>
+  <section class="section-ph text-center relative overflow-hidden">
+    <div class="container relative">
+      <div class="absolute top-0 left-0 w-full pointer-events-none">
+        <div class="h-100 w-full overflow-hidden -translate-y-10">
+          <canvas class="heroSporeCanvas w-full"></canvas>
+        </div>
+      </div>
+
+      <div class="row justify-center">
+        <div class="sm:col-10 md:col-8 lg:col-6">
+          <span class="text-[8rem] block font-bold text-primary">404</span>
+          <h1 class="h2 mb-4">Page not found</h1>
+          <div class="content">
+            <p>
+              That URL is not on OverwatchCheats.com. Head back home for
+              Overwatch 2 ESP guides, or open Zadeyo.com if you need to buy
+              access.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-4 justify-center mt-8">
+            <a href="/" class="btn btn-primary">OverwatchCheats.com home</a>
+            <a
+              href="https://zadeyo.com/products/overwatch-2-novaxware"
+              class="btn btn-outline"
+              target="_blank"
+              rel="noopener noreferrer">Buy at Zadeyo</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="absolute left-1/2 top-0 -translate-y-1/2 -translate-x-1/2 size-160 xl:size-300 -z-20 blur-2xl pointer-events-none"
+      style="background: radial-gradient(circle, var(--color-primary) 0%, color-mix(in srgb, var(--color-primary) 78%, transparent) 20%, transparent 70%);"
+    >
+    </div>
+  </section>
+</Base>

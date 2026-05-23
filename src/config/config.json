@@ -1,0 +1,39 @@
+{
+  "site": {
+    "title": "OverwatchCheats.com",
+    "base_url": "https://overwatchcheats.com",
+    "base_path": "/",
+    "trailing_slash": false,
+    "favicon": "/images/favicon.png",
+    "logo": "/images/logo.svg",
+    "logo_width": "160",
+    "logo_height": "45",
+    "logo_text": "Zadeyo"
+  },
+  "settings": {
+    "sticky_header": true
+  },
+  "params": {
+    "contact_form_action": "#",
+    "checklist_form_action": "#",
+    "apply_form_action": "#",
+    "copyright": "Copyright &copy; 2026 <strong>OverwatchCheats.com</strong> All Rights Reserved",
+    "footer_tagline": "Guides and info for Overwatch 2 ESP on PC. Purchase at Zadeyo.com.",
+    "footer_email": "support@overwatchcheats.com",
+    "footer_phone": ""
+  },
+  "navigation_button": {
+    "enable": true,
+    "label": "Buy at Zadeyo",
+    "link": "https://zadeyo.com/products/overwatch-2-novaxware"
+  },
+  "google_tag_manager": {
+    "enable": false,
+    "gtm_id": "GTM-XXXXXX"
+  },
+  "metadata": {
+    "meta_author": "OverwatchCheats.com",
+    "meta_image": "/images/og-image.png",
+    "meta_description": "OverwatchCheats.com — Overwatch 2 ESP guides for PC: wallhack boxes, health bars, distance. Checkout and loader access at Zadeyo.com."
+  }
+}

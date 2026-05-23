@@ -1,0 +1,123 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  loading?: "eager" | "lazy" | null | undefined;
+  decoding?: "async" | "auto" | "sync" | null | undefined;
+  format?: "auto" | "avif" | "jpeg" | "png" | "svg" | "webp";
+  fit?: "cover" | "contain" | "fill" | "none" | "scale-down";
+  class?: string;
+  style?: any;
+}
+
+/** Intrinsic sizes for generated PNG/JPG assets (matches scripts/generate-missing-images.mjs). */
+const FALLBACK_DIMS: Record<string, { width: number; height: number }> = {
+  "/images/about_hero.png": { width: 1200, height: 700 },
+  "/images/automark_dashboard.png": { width: 1100, height: 650 },
+  "/images/og-image.png": { width: 1200, height: 630 },
+  "/images/our-story-hero.jpg": { width: 800, height: 900 },
+  "/images/ebook.png": { width: 400, height: 250 },
+  "/images/avatar.png": { width: 128, height: 128 },
+  "/images/favicon.png": { width: 64, height: 64 },
+  "/images/brands-group-1.png": { width: 280, height: 280 },
+  "/images/brands-group-2.png": { width: 280, height: 280 },
+  "/images/brands-group-3.png": { width: 280, height: 280 },
+  "/images/brands-group-4.png": { width: 280, height: 280 },
+  "/images/brands-group-5.png": { width: 280, height: 280 },
+  "/images/blog/author-1.png": { width: 96, height: 96 },
+  "/images/blog/post-1.png": { width: 600, height: 310 },
+  "/images/blog/post-2.png": { width: 600, height: 310 },
+  "/images/blog/post-3.png": { width: 600, height: 310 },
+  "/images/blog/post-4.png": { width: 600, height: 310 },
+  "/images/blog/post-5.png": { width: 600, height: 310 },
+  "/images/blog/featured-cover.png": { width: 800, height: 420 },
+  "/images/testimonials/1.png": { width: 640, height: 360 },
+  "/images/testimonials/2.png": { width: 640, height: 360 },
+  "/images/testimonials/3.png": { width: 640, height: 360 },
+};
+
+let {
+  src,
+  alt,
+  width,
+  height,
+  loading,
+  decoding,
+  class: className,
+  format,
+  style,
+  fit,
+} = Astro.props;
+
+const publicSrc = src.startsWith("/") ? src : `/${src}`;
+const globKey = `/public${publicSrc}`;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/public/images/**/*.{jpeg,jpg,png,gif,webp}",
+);
+
+const isValidPath = Boolean(images[globKey]);
+const useOptimized = isValidPath && !publicSrc.endsWith(".svg");
+
+let resolvedWidth = width;
+let resolvedHeight = height;
+
+if (isValidPath && (!resolvedWidth || !resolvedHeight)) {
+  const mod = await images[globKey]();
+  resolvedWidth = resolvedWidth ?? mod.default.width;
+  resolvedHeight = resolvedHeight ?? mod.default.height;
+}
+
+const fallback = FALLBACK_DIMS[publicSrc];
+if (fallback) {
+  resolvedWidth = resolvedWidth ?? fallback.width;
+  resolvedHeight = resolvedHeight ?? fallback.height;
+}
+
+if (!resolvedWidth || !resolvedHeight) {
+  resolvedWidth = resolvedWidth ?? 48;
+  resolvedHeight = resolvedHeight ?? 48;
+}
+
+const outputFormat = format ?? (useOptimized ? "webp" : undefined);
+
+if (!isValidPath && import.meta.env.DEV) {
+  console.warn(
+    `Image not found: ${publicSrc}. Add the file under public/images/ or run: node scripts/generate-missing-images.mjs`,
+  );
+}
+---
+
+{
+  useOptimized ? (
+    <Image
+      src={images[globKey]() as Promise<{ default: ImageMetadata }>}
+      alt={alt}
+      width={resolvedWidth}
+      height={resolvedHeight}
+      loading={loading ?? "lazy"}
+      sizes={`(max-width: 767px) min(100vw, ${resolvedWidth}px), ${resolvedWidth}px`}
+      fit={fit ? fit : "contain"}
+      decoding={decoding ?? "async"}
+      class={className}
+      format={outputFormat}
+      style={style}
+    />
+  ) : (
+    <img
+      src={publicSrc}
+      alt={alt}
+      width={resolvedWidth}
+      height={resolvedHeight}
+      loading={loading ?? "lazy"}
+      decoding={decoding ?? "async"}
+      class={className}
+      style={style}
+    />
+  )
+}

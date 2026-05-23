@@ -1,0 +1,53 @@
+{
+  "main": [
+    {
+      "name": "Blog",
+      "url": "/blog"
+    },
+    {
+      "name": "Contact",
+      "url": "/contact"
+    }
+  ],
+  "footer_col_1_title": "OverwatchCheats.com",
+  "footer_col_2_title": "Guides",
+  "footer_col_3_title": "Legal",
+  "footer_primary": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "About",
+      "url": "/about"
+    },
+    {
+      "name": "Pricing",
+      "url": "/pricing"
+    },
+    {
+      "name": "Contact",
+      "url": "/contact"
+    }
+  ],
+  "footer_resource": [
+    {
+      "name": "Blog",
+      "url": "/blog"
+    },
+    {
+      "name": "Buy at Zadeyo",
+      "url": "https://zadeyo.com/products/overwatch-2-novaxware"
+    }
+  ],
+  "footer_legal": [
+    {
+      "name": "Privacy Policy",
+      "url": "/privacy-policy"
+    },
+    {
+      "name": "Terms and Conditions",
+      "url": "/term-and-condition"
+    }
+  ]
+}

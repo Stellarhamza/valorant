@@ -1,0 +1,111 @@
+import mdx from "@astrojs/mdx";
+import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
+import AutoImport from "astro-auto-import";
+import { defineConfig, fontProviders } from "astro/config";
+import remarkCollapse from "remark-collapse";
+import remarkToc from "remark-toc";
+import sharp from "sharp";
+import config from "./src/config/config.json";
+import theme from "./src/config/theme.json";
+
+// Helper to parse font string format: "FontName:wght@400;500;600;700"
+function parseFontString(fontStr) {
+  const [name, weightPart] = fontStr.split(":");
+  let weights = [400]; // default weight
+
+  if (weightPart) {
+    // Extract weights from wght@400;500;600 format
+    const weightMatch = weightPart.match(/wght@?([\d;]+)/);
+    if (weightMatch) {
+      weights = weightMatch[1].split(";").map((w) => parseInt(w, 10));
+    }
+  }
+
+  // remove + from font name and add space
+  const cleanName = name.replace(/\+/g, " ");
+  return { name: cleanName, weights };
+}
+
+// Build fonts configuration from theme.json
+const fontsConfig = Object.entries(theme.fonts.font_family)
+  .filter(([key]) => !key.includes("_type")) // Filter out type entries
+  .map(([key, fontStr]) => {
+    const { name, weights } = parseFontString(fontStr);
+    const typeKey = `${key}_type`;
+    const fallback = theme.fonts.font_family[typeKey] || "sans-serif";
+
+    return {
+      name,
+      cssVariable: `--font-${key}`,
+      provider: fontProviders.google(),
+      weights: key === "secondary" ? [700] : weights,
+      display: "swap",
+      fallbacks: [fallback],
+      subsets: ["latin"],
+    };
+  });
+
+// https://astro.build/config
+// Static site for Netlify (no SSR adapter — avoids dev logger.flush crashes).
+export default defineConfig({
+  output: "static",
+  compressHTML: true,
+  build: {
+    inlineStylesheets: "auto",
+  },
+  site: config.site.base_url ? config.site.base_url : "http://examplesite.com",
+  base: config.site.base_path ? config.site.base_path : "/",
+  trailingSlash: config.site.trailing_slash ? "always" : "never",
+  image: { service: sharp() },
+  vite: { plugins: [tailwindcss()] },
+  fonts: fontsConfig,
+  integrations: [
+    react(),
+    sitemap({
+      filter: (page) => {
+        const path = new URL(page).pathname;
+        return (
+          !path.startsWith("/api") &&
+          !path.startsWith("/careers") &&
+          !path.startsWith("/integrations") &&
+          !path.startsWith("/case-study") &&
+          !path.startsWith("/elements") &&
+          path !== "/404" &&
+          path !== "/404.html"
+        );
+      },
+      serialize(item) {
+        const site = config.site.base_url.replace(/\/$/, "");
+        const parsed = new URL(item.url);
+        const pathname = parsed.pathname.replace(/\/$/, "") || "/";
+
+        item.url = pathname === "/" ? site : `${site}${pathname}`;
+
+        item.changefreq =
+          pathname === "/" ? "weekly" : pathname.startsWith("/blog/") ? "monthly" : "monthly";
+        item.priority =
+          pathname === "/" ? 1.0 : pathname === "/blog" ? 0.9 : pathname.startsWith("/blog/") ? 0.8 : 0.7;
+
+        return item;
+      },
+    }),
+    AutoImport({
+      imports: [
+        "@/shortcodes/Button",
+        "@/shortcodes/Accordion",
+        "@/shortcodes/Notice",
+        "@/shortcodes/Video",
+        // "@/shortcodes/Youtube",
+        "@/shortcodes/Tabs",
+        "@/shortcodes/Tab",
+      ],
+    }),
+    mdx(),
+  ],
+  markdown: {
+    remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
+    shikiConfig: { theme: "one-dark-pro", wrap: true },
+  },
+});

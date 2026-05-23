@@ -1,0 +1,12 @@
+# www → apex (canonical host)
+https://www.overwatchcheats.com/*  https://overwatchcheats.com/:splat  301!
+
+# Legacy template routes only (never redirect "/")
+/careers        /  301
+/careers/*      /  301
+/integrations   /  301
+/case-study     /  301
+/case-study/*   /  301
+/elements       /  301
+/features       /  301
+/features/*     /  301

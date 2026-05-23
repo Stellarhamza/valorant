@@ -1,0 +1,66 @@
+{
+  "name": "automark-astro",
+  "version": "1.0.0",
+  "description": "Automark is a marketing and sales automation platform",
+  "author": "Themefisher",
+  "license": "MIT",
+  "packageManager": "yarn@1.22.22",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"node scripts/themeGenerator.js --watch\" \"astro dev\"",
+    "build": "node scripts/themeGenerator.js && node scripts/generate-missing-images.mjs && astro build",
+    "images:generate": "node scripts/generate-missing-images.mjs",
+    "preview": "astro preview",
+    "check": "astro check",
+    "format": "prettier -w ./src",
+    "deploy:cf-workers": "npm run build && wrangler deploy",
+    "preview:cf-workers": "npm run build && wrangler dev"
+  },
+  "dependencies": {
+    "@astrojs/check": "0.9.8",
+    "@astrojs/mdx": "5.0.3",
+    "@astrojs/react": "5.0.3",
+    "@astrojs/sitemap": "3.7.2",
+    "@digi4care/astro-google-tagmanager": "^1.6.0",
+    "@justinribeiro/lite-youtube": "^1.9.0",
+    "astro": "6.3.7",
+    "astro-auto-import": "^0.5.1",
+    "date-fns": "^4.1.0",
+    "github-slugger": "^2.0.0",
+    "gsap": "3.14.1",
+    "lenis": "1.3.17",
+    "marked": "^18.0.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-icons": "^5.6.0",
+    "remark-collapse": "^0.1.2",
+    "remark-toc": "^9.0.0",
+    "sharp": "^0.34.5",
+    "stripe": "^22.0.1",
+    "vite": "^7.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.11",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/node": "25.6.0",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "concurrently": "^9.2.1",
+    "eslint": "^10.2.0",
+    "prettier": "^3.8.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwind-bootstrap-grid": "^7.0.0",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^6.0.2",
+    "wrangler": "^4.81.1"
+  },
+  "overrides": {
+    "astro": "$astro",
+    "typescript": "$typescript"
+  }
+}

@@ -1,0 +1,35 @@
+---
+import config from "@/config/config.json";
+
+const { src }: { src?: string } = Astro.props;
+const { logo_text, title } = config.site;
+const label = logo_text || title;
+---
+
+<a
+  href="/"
+  class="logo-brand navbar-brand inline-flex items-center gap-2.5 shrink-0"
+  aria-label={title}
+>
+  <img
+    src={src ?? "/images/logo-mark.svg"}
+    alt=""
+    width="40"
+    height="40"
+    class="logo-brand__mark size-10 shrink-0"
+    decoding="async"
+    aria-hidden="true"
+  />
+  <span class="logo-brand__text font-extrabold leading-none tracking-tight text-white">
+    {label}
+  </span>
+</a>
+
+<style>
+  .logo-brand__text {
+    font-family: var(--font-secondary), system-ui, sans-serif;
+    font-size: 1.625rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+</style>

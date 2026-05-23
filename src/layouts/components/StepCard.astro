@@ -1,0 +1,47 @@
+---
+import ImageMod from "./ImageMod.astro";
+
+interface Props {
+  image: string;
+  number: string;
+  title: string;
+  content: string;
+}
+const { image, number, title, content } = Astro.props;
+---
+
+<div class="p-8 xl:px-40 xl:py-2 relative" data-bn-card={number}>
+  <div
+    class="flex flex-col items-center gap-8 lg:flex-row lg:items-center lg:justify-between"
+  >
+    <div
+      class="flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:gap-8 lg:shrink-0"
+    >
+      <ImageMod
+        src={image}
+        alt={`${title} icon`}
+        width={112}
+        height={112}
+        class="h-28 w-28 object-contain shrink-0"
+        height={112}
+        width={112}
+      />
+      <div class="relative grid place-items-center">
+        <div
+          class="text-[5rem] lg:text-[100px] font-extrabold t-stroke text-transparent leading-none"
+        >
+          {number}
+        </div>
+        <h3 class="text-h5-sm font-bold absolute text-center px-2">{title}</h3>
+      </div>
+    </div>
+    <p class="text-sm text-center lg:max-w-md lg:text-left">{content}</p>
+  </div>
+  <div class="absolute inset-0 size-full -z-10">
+    <div
+      class="border border-border size-full rounded-t-4xl rounded-b-4xl bg-primary/5 corner-squircle"
+      style="transform: perspective(100px) rotateX(-2deg);"
+    >
+    </div>
+  </div>
+</div>

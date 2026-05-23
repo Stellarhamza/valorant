@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /careers
+Disallow: /integrations
+Disallow: /case-study
+Disallow: /elements
+Disallow: /features
+
+Sitemap: https://overwatchcheats.com/sitemap-index.xml

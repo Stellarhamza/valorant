@@ -1,0 +1,45 @@
+---
+interface Props {
+  src?: string;
+  class?: string;
+  gsap?: boolean;
+  /** Desktop: load hero MP4 immediately. Mobile uses poster + lazy video. */
+  priority?: boolean;
+  poster?: string;
+}
+
+const {
+  src = "/showcase.mp4",
+  class: className = "",
+  gsap = true,
+  priority = false,
+  poster = "/images/og-image.png",
+} = Astro.props;
+
+const containerClass = [
+  "relative w-full overflow-hidden",
+  gsap ? "max-w-280 mx-auto rounded-4xl" : "",
+  className,
+]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<div class={containerClass} {...gsap && { "data-gsap-video-showcase": true }}>
+  <video
+    class="w-full aspect-video object-cover bg-body"
+    autoplay
+    muted
+    loop
+    width="1000"
+    height="563"
+    playsinline
+    poster={poster}
+    preload="none"
+    data-lazy-video
+    {...priority && { "data-hero-video": true }}
+  >
+    <source data-src={src} type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>

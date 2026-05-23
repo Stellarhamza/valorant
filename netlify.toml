@@ -1,0 +1,38 @@
+# Publish directory MUST be "dist" (not .vercel/output/static).
+# In Netlify UI: Site configuration → Build & deploy → clear any custom publish path override.
+
+[build]
+  command = "yarn build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22.14.0"
+  YARN_VERSION = "1.22.22"
+  NPM_FLAGS = "--legacy-peer-deps"
+
+# Redirects live in public/_redirects (avoid duplicating rules here — duplicates caused / → / loops)
+
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/scripts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

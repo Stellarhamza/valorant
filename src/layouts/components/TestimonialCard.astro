@@ -1,0 +1,43 @@
+---
+interface Props {
+  poster: string;
+  content?: string;
+  name?: string;
+  designation?: string;
+  video?: string;
+}
+const { poster, content, name, designation, video } = Astro.props;
+---
+
+<div>
+  <div
+    data-testimonial-video
+    class="relative w-full max-w-280 mx-auto rounded-[30px] corner-squircle overflow-hidden"
+  >
+    <video
+      class="w-full aspect-video object-cover"
+      width="1000"
+      height="563"
+      autoplay={!!video}
+      muted={!!video}
+      loop={!!video}
+      playsinline
+      preload={video ? "none" : "metadata"}
+      {...video && { "data-lazy-video": true }}
+      poster={video ? undefined : poster}
+    >
+      {video && <source data-src={video} type="video/mp4" />}
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="p-7 rounded-[30px] mt-2.5 corner-squircle bg-light/60">
+    <p class="text-text-light text-h6 text-center">
+      {content}
+    </p>
+    <hr class="opacity-20 my-10" />
+    <div class="text-center">
+      <p class="text-text-light font-semibold">{name}</p>
+      <p class="text-text-dark/60 text-sm">{designation}</p>
+    </div>
+  </div>
+</div>

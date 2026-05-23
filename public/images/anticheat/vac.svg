@@ -1,0 +1,5 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="25" cy="25" r="25" fill="#1B2838"/>
+  <path d="M18 32V18H22L27 26V18H31V32H27L22 24V32H18Z" fill="#66C0F4"/>
+  <text x="25" y="40" text-anchor="middle" fill="#66C0F4" font-family="Arial,sans-serif" font-size="5.5" font-weight="bold">VAC</text>
+</svg>
