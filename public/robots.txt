@@ -1,11 +1,23 @@
+# https://valorantcheat.com/robots.txt
 User-agent: *
 Allow: /
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 Disallow: /api/
+Disallow: /404
+Disallow: /404.html
 Disallow: /careers
+Disallow: /careers/
 Disallow: /integrations
 Disallow: /case-study
+Disallow: /case-study/
 Disallow: /elements
 Disallow: /features
+Disallow: /features/
 
-Sitemap: https://overwatchcheats.com/sitemap-index.xml
+Sitemap: https://valorantcheat.com/sitemap-index.xml

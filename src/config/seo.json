@@ -1,16 +1,54 @@
 {
-  "site_name": "OverwatchCheats",
-  "brand_domain": "OverwatchCheats.com",
-  "site_url": "https://overwatchcheats.com",
+  "site_name": "ValorantCheat",
+  "brand_domain": "ValorantCheat.com",
+  "site_url": "https://valorantcheat.com",
   "store_name": "Zadeyo",
-  "store_url": "https://zadeyo.com/products/overwatch-2-novaxware",
+  "store_url": "https://zadeyo.com/valorant-xray",
   "default_og_image": "/images/og-image.png",
+  "default_og_alt": "Valorant Cheats & Hacks — ESP, Aimbot, Wallhack | ValorantCheat.com",
+  "og_image_width": 1200,
+  "og_image_height": 630,
+  "og_image_type": "image/png",
+  "locale": "en_US",
   "twitter_handle": "",
-  "default_keywords": "overwatch 2 cheats, overwatch cheats, overwatch 2 esp, overwatch esp, overwatch wallhack, overwatch 2 wallhack, overwatch hack pc, overwatchcheats.com",
+  "twitter_card": "summary_large_image",
+  "default_keywords": "valorant cheats, valorant hacks, cheat valorant, cheat valo, valorant aimbot, hack valorant, valorant esp, valorant free hack, valorant wallhack, valorant wall hacks, valorant esp hack, valo wall hack, valorant hacks free, valorant cheats free, free valorant hacks, free valorant cheats, valorant hack esp, valorant triggerbot, best valorant cheats, valorant hacker, aimbot valorant, paid valorant cheats, cheats for valorant, buy valorant cheats, esp valorant, valorantcheat.com",
   "homepage": {
-    "title": "Overwatch 2 Cheats & ESP | OverwatchCheats.com",
-    "meta_title": "Overwatch 2 Cheats & ESP (Wallhack) for PC | OverwatchCheats.com",
-    "description": "OverwatchCheats.com covers Overwatch 2 ESP on PC—wallhack boxes, health bars, and distance. Guides and setup help here; buy access at Zadeyo.com. Windows only.",
-    "keywords": "overwatch 2 cheats, overwatch cheats, overwatch 2 esp, overwatch esp, overwatch wallhack, overwatchcheats.com, zadeyo overwatch"
+    "title": "Valorant Cheats & Hacks | ESP, Aimbot, Wallhack | ValorantCheat.com",
+    "meta_title": "Valorant Cheats & Hacks — ESP, Aimbot, Wallhack, Triggerbot | ValorantCheat.com",
+    "description": "ValorantCheat.com — guides for Valorant cheats on PC: ESP, aimbot, wallhack, triggerbot. Buy VALORANT Xray at Zadeyo. Windows only.",
+    "keywords": "valorant cheats, valorant hacks, cheat valorant, cheat valo, valorant aimbot, hack valorant, valorant esp, valorant free hack, valorant wallhack, valorant wall hacks, valorant esp hack, valo wall hack, valorant hacks free, valorant cheats free, free valorant hacks, free valorant cheats, valorant hack esp, valorant triggerbot, best valorant cheats, valorant hacker, aimbot valorant, paid valorant cheats, cheats for valorant, buy valorant cheats, esp valorant, valorantcheat.com"
+  },
+  "pages": {
+    "about": {
+      "meta_title": "About ValorantCheat.com | Valorant Cheats & Hacks Guides",
+      "description": "About ValorantCheat.com — independent guides for Valorant cheats, hacks, ESP, aimbot, and wallhack on Windows PC. Learn before you buy on Zadeyo.",
+      "keywords": "about valorantcheat, valorant cheats site, valorant hacks guide, best valorant cheats, valorantcheat.com"
+    },
+    "blog": {
+      "meta_title": "Valorant Cheats Blog | Hacks, ESP, Aimbot & Wallhack Guides",
+      "description": "Free Valorant cheats guides: install, ESP, wallhack, aimbot, triggerbot, settings, and patch updates. ValorantCheat.com — buy at Zadeyo when ready.",
+      "keywords": "valorant cheats, valorant hacks, cheat valorant, valorant aimbot, valorant esp, valorant wallhack, best valorant cheats, cheats for valorant, valorantcheat.com"
+    },
+    "pricing": {
+      "meta_title": "Valorant Cheats Pricing | Buy Valorant Hacks | ValorantCheat.com",
+      "description": "Valorant cheats pricing on PC — ESP, wallhack, and triggerbot plans explained. Compare on ValorantCheat.com; checkout at Zadeyo VALORANT Xray.",
+      "keywords": "valorant cheats price, paid valorant cheats, buy valorant cheats, valorant hacks cost, best valorant cheats, valorantcheat.com"
+    },
+    "contact": {
+      "meta_title": "Contact ValorantCheat.com | Valorant Cheats Support",
+      "description": "Contact ValorantCheat.com for Valorant cheats, hacks, ESP, and aimbot guide questions. Billing and loaders: Zadeyo after purchase.",
+      "keywords": "valorantcheat contact, valorant cheats support, valorant esp help, valorantcheat.com"
+    },
+    "privacy": {
+      "meta_title": "Privacy Policy | ValorantCheat.com",
+      "description": "Privacy policy for ValorantCheat.com — how we handle data when you read Valorant cheats and hacks guides. Purchases on Zadeyo.",
+      "keywords": "valorantcheat privacy, valorant cheats privacy policy"
+    },
+    "terms": {
+      "meta_title": "Terms and Conditions | ValorantCheat.com",
+      "description": "Terms of use for ValorantCheat.com — Valorant cheats, hacks, ESP, aimbot, and wallhack guides. Software sales on Zadeyo.",
+      "keywords": "valorantcheat terms, valorant cheats terms of use"
+    }
   }
 }

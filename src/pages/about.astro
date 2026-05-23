@@ -13,18 +13,25 @@ import { markdownify } from "@/lib/utils/textConverter";
 import Features from "@/partials/Features.astro";
 import Testimonial from "@/partials/Testimonial.astro";
 import type { About } from "@/types";
+import seo from "@/config/seo.json";
 import { getPageStructuredData } from "@/lib/seo";
 
 const about = await getListPage("about", "-index");
 const aboutData: About = about.data;
 
-const metaTitle = aboutData.meta_title ?? aboutData.title ?? "About";
+const metaTitle =
+  aboutData.meta_title ?? seo.pages.about.meta_title ?? aboutData.title ?? "About";
 const metaDescription =
-  aboutData.description ?? "About OverwatchCheats.com.";
+  aboutData.description ?? seo.pages.about.description ?? "About ValorantCheat.com.";
 ---
 
 <Base
-  {...aboutData}
+  title={aboutData.title}
+  meta_title={metaTitle}
+  description={metaDescription}
+  keywords={aboutData.keywords ?? seo.pages.about.keywords}
+  image={aboutData.image ?? seo.default_og_image}
+  ogImageAlt={metaTitle}
   canonical="/about"
   structuredData={getPageStructuredData(
     "/about",

@@ -8,11 +8,9 @@ import PricingSection from "@/layouts/components/PricingSection.astro";
 import ProcessCard from "@/layouts/components/ProcessCard.astro";
 import GradientBlob from "@/layouts/components/GradientBlob.astro";
 import BrandsCarousel from "@/layouts/components/BrandsCarousel.astro";
-import OurStory from "@/layouts/components/OurStory.astro";
 import Faq from "@/layouts/components/Faq.astro";
 import CallToAction from "@/layouts/components/CallToAction.astro";
 import VideoShowcase from "@/layouts/components/VideoShowcase.astro";
-import LeadGeneration from "@/layouts/components/LeadGeneration.astro";
 import config from "@/config/config.json";
 import { getListPage } from "@/lib/contentParser.astro";
 import { markdownify } from "@/lib/utils/textConverter";
@@ -40,13 +38,13 @@ const homepageJsonLd = getHomepageStructuredData(seoDescription, faqItems);
 
 // Hero banner copy (also in src/content/homepage/-index.md)
 const heroBanner = {
-  title: "Overwatch 2 <strong>ESP & wallhack</strong> on PC",
+  title: "Valorant <strong>cheats, ESP & wallhack</strong> on PC",
   content:
-    "OverwatchCheats.com walks you through what the build does and how to set it up. When you are ready to buy, checkout is on Zadeyo.com.",
+    "ValorantCheat.com walks you through what the build does and how to set it up. When you are ready to buy Valorant cheats, checkout is on Zadeyo.com.",
   button_primary: {
     enable: true,
-    label: "Buy at Zadeyo",
-    link: "https://zadeyo.com/products/overwatch-2-novaxware",
+    label: "Buy Valorant Cheats",
+    link: "https://zadeyo.com/valorant-xray",
   },
   button_secondary: {
     enable: true,
@@ -65,6 +63,7 @@ const { checklist_form_action } = config.params;
   description={homepageData.description ?? seo.homepage.description}
   image={homepageData.image ?? seo.default_og_image}
   keywords={homepageData.keywords ?? seo.homepage.keywords}
+  ogImageAlt={seo.default_og_alt}
   canonical="/"
   structuredData={homepageJsonLd}
 >
@@ -577,9 +576,6 @@ const { checklist_form_action } = config.params;
     )
   }
 
-  <!-- Our Thought / CEO Letter -->
-  <OurStory />
-
   <!-- Integrations -->
   {
     homepageData.integrations.enable && (
@@ -613,13 +609,6 @@ const { checklist_form_action } = config.params;
           <div class="size-180 xl:size-225 bg-radial from-primary-light/40 to-transparent from-0% to-70% rounded-full" />
         </div>
       </section>
-    )
-  }
-
-  <!-- Lead Generation -->
-  {
-    homepageData.lead_generation.enable && (
-      <LeadGeneration lead_generation={homepageData.lead_generation} />
     )
   }
 

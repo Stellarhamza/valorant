@@ -20,11 +20,11 @@ export const homeVideoPool = [
 ] as const;
 
 const blogVideoBySlug: Record<string, string> = {
-  "overwatch-2-cheats-zadeyo-guide": videos.hero,
-  "install-overwatch-esp-windows": videos.mainFeatures,
-  "overwatch-esp-features-wallhack": videos.testimonials[0],
-  "overwatch-cheat-settings-profiles": videos.testimonials[1],
-  "overwatch-2-patch-day-esp": videos.testimonials[2],
+  "valorant-cheats-zadeyo-guide": videos.hero,
+  "install-valorant-esp-windows": videos.mainFeatures,
+  "valorant-esp-wallhack-features": videos.testimonials[0],
+  "valorant-cheat-settings-profiles": videos.testimonials[1],
+  "valorant-patch-day-esp": videos.testimonials[2],
 };
 
 /** Resolve blog post video to match homepage slots (by slug, else pool index). */
@@ -36,5 +36,4 @@ export function getBlogVideo(slug: string, index = 0): string {
 }
 
 export const ZADEYO_URL = "https://zadeyo.com";
-export const ZADEYO_PRODUCT_URL =
-  "https://zadeyo.com/products/overwatch-2-novaxware";
+export const ZADEYO_PRODUCT_URL = "https://zadeyo.com/valorant-xray";

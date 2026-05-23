@@ -1,7 +1,7 @@
 ---
 enable: false
 badge: ""
-title: "Stacking random <strong>Overwatch 2</strong> tools adds up fast"
+title: "Stacking random <strong>Valorant</strong> tools adds up fast"
 price_suffix: ""
 items:
   - title: "Forum ESP (monthly)"
@@ -24,7 +24,7 @@ items:
     price: "No play"
     images: []
 
-  - title: "One OW2 build (us)"
+  - title: "One Valorant build (us)"
     price: "One bill"
     images: []
 ---

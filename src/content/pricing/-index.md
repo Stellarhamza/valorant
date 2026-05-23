@@ -1,15 +1,15 @@
 ---
-title: "Overwatch 2 ESP Pricing"
-meta_title: "Overwatch 2 ESP Pricing & Plans | OverwatchCheats.com"
-description: "See what Overwatch 2 ESP plans include on PC. OverwatchCheats.com explains features; complete purchase at Zadeyo.com."
-keywords: "overwatch 2 cheats price, overwatch esp pricing, overwatch cheats cost, overwatchcheats.com, zadeyo"
+title: "Valorant Cheats Pricing"
+meta_title: "Valorant Cheats Pricing & Plans | ValorantCheat.com"
+description: "See what Valorant cheats plans include on PC. ValorantCheat.com explains ESP, aimbot, wallhack features; complete purchase at Zadeyo.com."
+keywords: "valorant cheats price, paid valorant cheats, buy valorant cheats, valorant hacks cost, valorantcheat.com, zadeyo"
 image: "/images/og-image.png"
 draft: false
 
 page_header:
   badge: "Pricing"
-  title: "Overwatch 2 <strong>ESP plans</strong>"
-  content: "Plan details and checkout live on Zadeyo.com. This page summarizes what you are buying—Windows PC, Overwatch 2 only."
+  title: "Valorant cheats <strong>plans</strong>"
+  content: "Plan details and checkout live on Zadeyo.com. This page summarizes what you are buying—Windows PC, Valorant only."
 
 toggler:
   monthly_label: "Monthly"
@@ -23,8 +23,8 @@ plans:
     button:
       enable: true
       label: "Buy on Zadeyo"
-      link: "https://zadeyo.com/products/overwatch-2-novaxware"
-    description: "Core ESP—boxes, health, and distance on Windows PC."
+      link: "https://zadeyo.com/valorant-xray"
+    description: "Core Valorant ESP—boxes, health, and distance on Windows PC."
     features:
       - label: "Box ESP"
         included: true
@@ -34,7 +34,7 @@ plans:
         included: true
       - label: "Menu toggle key"
         included: true
-      - label: "Skeleton / head ESP"
+      - label: "Wallhack / skeleton ESP"
         included: false
 
   - title: "Pro"
@@ -45,16 +45,16 @@ plans:
     button:
       enable: true
       label: "Buy on Zadeyo"
-      link: "https://zadeyo.com/products/overwatch-2-novaxware"
-    description: "Full ESP plus skeleton, head ESP, and soft aimbot—see Zadeyo for live pricing."
+      link: "https://zadeyo.com/valorant-xray"
+    description: "Full Valorant ESP plus wallhack, aimbot, and triggerbot—see Zadeyo for live pricing."
     features:
       - label: "Everything in Starter"
         included: true
+      - label: "Valorant wallhack"
+        included: true
       - label: "Skeleton ESP"
         included: true
-      - label: "Head ESP"
-        included: true
-      - label: "Soft aimbot"
+      - label: "Valorant aimbot"
         included: true
       - label: "Saved profiles"
         included: true
@@ -66,18 +66,18 @@ plans:
     button:
       enable: true
       label: "Buy on Zadeyo"
-      link: "https://zadeyo.com/products/overwatch-2-novaxware"
-    description: "Longer access window for players who queue OW2 daily."
+      link: "https://zadeyo.com/valorant-xray"
+    description: "Longer access window for players who queue Valorant daily."
     features:
       - label: "Everything in Pro"
+        included: true
+      - label: "Valorant triggerbot"
         included: true
       - label: "Priority Discord support"
         included: true
       - label: "Longer subscription term"
         included: true
-      - label: "Profile export backup"
-        included: true
-      - label: "OverwatchCheats.com guides included"
+      - label: "ValorantCheat.com guides included"
         included: true
 
 comparison:
@@ -90,7 +90,7 @@ comparison:
     - label: "Pro"
     - label: "Extended"
   rows:
-    - feature: "Overwatch 2 ESP (PC)"
+    - feature: "Valorant ESP (PC)"
       values: [true, true, true]
     - feature: "Health + distance"
       values: [true, true, true]
@@ -100,6 +100,6 @@ comparison:
       values: [true, true, true]
     - feature: "Checkout on Zadeyo.com"
       values: [true, true, true]
-    - feature: "Guides on OverwatchCheats.com"
+    - feature: "Guides on ValorantCheat.com"
       values: [true, true, true]
 ---

@@ -37,6 +37,12 @@ export function resolveOgImage(image?: string): string {
 
 type FaqItem = { question: string; answer: string };
 
+type BlogListItem = {
+  id: string;
+  title: string;
+  url?: string;
+};
+
 const organizationNode = {
   "@type": "Organization",
   "@id": `${SITE_URL}/#organization`,
@@ -45,8 +51,11 @@ const organizationNode = {
   logo: {
     "@type": "ImageObject",
     url: `${SITE_URL}/images/logo.svg`,
+    width: 180,
+    height: 40,
   },
   email: config.params.footer_email,
+  description: config.metadata.meta_description,
 };
 
 const websiteNode = {
@@ -54,6 +63,7 @@ const websiteNode = {
   "@id": `${SITE_URL}/#website`,
   url: `${SITE_URL}/`,
   name: BRAND_DOMAIN,
+  alternateName: ["ValorantCheat", "valorantcheat.com"],
   description: config.metadata.meta_description,
   inLanguage: "en-US",
   publisher: { "@id": `${SITE_URL}/#organization` },
@@ -78,7 +88,8 @@ export function getPageStructuredData(
       isPartOf: { "@id": `${SITE_URL}/#website` },
       about: {
         "@type": "VideoGame",
-        name: "Overwatch 2",
+        name: "Valorant",
+        gamePlatform: "PC",
       },
       inLanguage: "en-US",
     },
@@ -87,6 +98,7 @@ export function getPageStructuredData(
   if (breadcrumbLabel && canonicalPath !== "/") {
     graph.push({
       "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
       itemListElement: [
         {
           "@type": "ListItem",
@@ -126,14 +138,20 @@ export function getHomepageStructuredData(
       isPartOf: { "@id": `${SITE_URL}/#website` },
       about: {
         "@type": "VideoGame",
-        name: "Overwatch 2",
+        name: "Valorant",
         gamePlatform: "https://schema.org/PCPlatform",
       },
       inLanguage: "en-US",
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: resolveOgImage(),
+        width: seo.og_image_width,
+        height: seo.og_image_height,
+      },
     },
     {
       "@type": "SoftwareApplication",
-      name: "Overwatch 2 ESP",
+      name: "Valorant Cheats",
       applicationCategory: "GameApplication",
       operatingSystem: "Windows 10, Windows 11",
       description,
@@ -169,6 +187,74 @@ export function getHomepageStructuredData(
   };
 }
 
+export function getBlogIndexStructuredData(
+  pageTitle: string,
+  description: string,
+  posts: BlogListItem[],
+) {
+  const blogUrl = resolveCanonicalUrl("/blog");
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      websiteNode,
+      organizationNode,
+      {
+        "@type": "CollectionPage",
+        "@id": `${blogUrl}#webpage`,
+        url: blogUrl,
+        name: pageTitle,
+        description,
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+        about: {
+          "@type": "VideoGame",
+          name: "Valorant",
+        },
+        inLanguage: "en-US",
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${blogUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: SITE_URL,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Valorant Cheats Guides",
+            item: blogUrl,
+          },
+        ],
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${blogUrl}#guides`,
+        name: "Valorant cheats & hacks guides",
+        numberOfItems: posts.length,
+        itemListElement: posts.map((post, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          url: post.url ?? resolveCanonicalUrl(`/blog/${post.id}`),
+          name: post.title,
+        })),
+      },
+      {
+        "@type": "Blog",
+        "@id": `${blogUrl}#blog`,
+        name: `${BRAND_DOMAIN} — Valorant cheat guides`,
+        url: blogUrl,
+        description,
+        publisher: { "@id": `${SITE_URL}/#organization` },
+        inLanguage: "en-US",
+      },
+    ],
+  };
+}
+
 type BlogArticleInput = {
   title: string;
   description: string;
@@ -177,6 +263,7 @@ type BlogArticleInput = {
   image?: string;
   author?: string;
   video?: string;
+  keywords?: string;
 };
 
 export function getBlogArticleStructuredData({
@@ -187,11 +274,14 @@ export function getBlogArticleStructuredData({
   image,
   author = BRAND_DOMAIN,
   video,
+  keywords,
 }: BlogArticleInput) {
   const pageUrl = resolveCanonicalUrl(
     urlPath.startsWith("/") ? urlPath : `/${urlPath}`,
   );
+  const blogUrl = resolveCanonicalUrl("/blog");
   const graph: Record<string, unknown>[] = [
+    websiteNode,
     organizationNode,
     {
       "@type": "BlogPosting",
@@ -199,6 +289,7 @@ export function getBlogArticleStructuredData({
       headline: title,
       description,
       url: pageUrl,
+      mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
       datePublished: date?.toISOString(),
       dateModified: date?.toISOString(),
       author: {
@@ -206,20 +297,58 @@ export function getBlogArticleStructuredData({
         name: author,
         url: SITE_URL,
       },
-      publisher: organizationNode,
-      image: image ? resolveOgImage(image) : resolveOgImage(),
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      image: {
+        "@type": "ImageObject",
+        url: image ? resolveOgImage(image) : resolveOgImage(),
+        width: image?.includes("/blog/post-") ? 1200 : seo.og_image_width,
+        height: image?.includes("/blog/post-") ? 630 : seo.og_image_height,
+      },
       inLanguage: "en-US",
       isPartOf: {
         "@type": "Blog",
-        "@id": `${resolveCanonicalUrl("/blog")}#blog`,
-        name: `${BRAND_DOMAIN} — Overwatch 2 guides`,
-        url: resolveCanonicalUrl("/blog"),
+        "@id": `${blogUrl}#blog`,
+        name: `${BRAND_DOMAIN} — Valorant cheat guides`,
+        url: blogUrl,
       },
       about: {
         "@type": "VideoGame",
-        name: "Overwatch 2",
+        name: "Valorant",
       },
-      keywords: DEFAULT_KEYWORDS,
+      keywords: keywords ?? DEFAULT_KEYWORDS,
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: title,
+      description,
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: SITE_URL,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Guides",
+          item: blogUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: title,
+          item: pageUrl,
+        },
+      ],
     },
   ];
 
@@ -232,6 +361,7 @@ export function getBlogArticleStructuredData({
       embedUrl: video,
       uploadDate: date?.toISOString(),
       inLanguage: "en-US",
+      thumbnailUrl: image ? resolveOgImage(image) : resolveOgImage(),
     });
   }
 

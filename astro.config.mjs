@@ -9,6 +9,11 @@ import remarkToc from "remark-toc";
 import sharp from "sharp";
 import config from "./src/config/config.json";
 import theme from "./src/config/theme.json";
+import {
+  getSitemapChangeFreq,
+  getSitemapLastMod,
+  getSitemapPriority,
+} from "./scripts/sitemap-meta.mjs";
 
 // Helper to parse font string format: "FontName:wght@400;500;600;700"
 function parseFontString(fontStr) {
@@ -72,6 +77,7 @@ export default defineConfig({
           !path.startsWith("/integrations") &&
           !path.startsWith("/case-study") &&
           !path.startsWith("/elements") &&
+          !path.startsWith("/features") &&
           path !== "/404" &&
           path !== "/404.html"
         );
@@ -82,11 +88,9 @@ export default defineConfig({
         const pathname = parsed.pathname.replace(/\/$/, "") || "/";
 
         item.url = pathname === "/" ? site : `${site}${pathname}`;
-
-        item.changefreq =
-          pathname === "/" ? "weekly" : pathname.startsWith("/blog/") ? "monthly" : "monthly";
-        item.priority =
-          pathname === "/" ? 1.0 : pathname === "/blog" ? 0.9 : pathname.startsWith("/blog/") ? 0.8 : 0.7;
+        item.lastmod = getSitemapLastMod(pathname);
+        item.changefreq = getSitemapChangeFreq(pathname);
+        item.priority = getSitemapPriority(pathname);
 
         return item;
       },

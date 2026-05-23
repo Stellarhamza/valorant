@@ -1,14 +1,14 @@
 {
   "site": {
-    "title": "OverwatchCheats.com",
-    "base_url": "https://overwatchcheats.com",
+    "title": "ValorantCheat.com",
+    "base_url": "https://valorantcheat.com",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
     "logo": "/images/logo.svg",
     "logo_width": "160",
     "logo_height": "45",
-    "logo_text": "Zadeyo"
+    "logo_text": "ValorantCheat"
   },
   "settings": {
     "sticky_header": true
@@ -17,23 +17,23 @@
     "contact_form_action": "#",
     "checklist_form_action": "#",
     "apply_form_action": "#",
-    "copyright": "Copyright &copy; 2026 <strong>OverwatchCheats.com</strong> All Rights Reserved",
-    "footer_tagline": "Guides and info for Overwatch 2 ESP on PC. Purchase at Zadeyo.com.",
-    "footer_email": "support@overwatchcheats.com",
+    "copyright": "Copyright &copy; 2026 <strong>ValorantCheat.com</strong> All Rights Reserved",
+    "footer_tagline": "Guides and info for Valorant cheats, ESP, aimbot & wallhack on PC. Purchase at Zadeyo.com.",
+    "footer_email": "support@valorantcheat.com",
     "footer_phone": ""
   },
   "navigation_button": {
     "enable": true,
-    "label": "Buy at Zadeyo",
-    "link": "https://zadeyo.com/products/overwatch-2-novaxware"
+    "label": "Buy Valorant Cheats",
+    "link": "https://zadeyo.com/valorant-xray"
   },
   "google_tag_manager": {
     "enable": false,
     "gtm_id": "GTM-XXXXXX"
   },
   "metadata": {
-    "meta_author": "OverwatchCheats.com",
+    "meta_author": "ValorantCheat.com",
     "meta_image": "/images/og-image.png",
-    "meta_description": "OverwatchCheats.com — Overwatch 2 ESP guides for PC: wallhack boxes, health bars, distance. Checkout and loader access at Zadeyo.com."
+    "meta_description": "ValorantCheat.com — Valorant cheats, hacks, ESP, aimbot, wallhack & triggerbot guides for PC. Buy VALORANT Xray at Zadeyo. Windows only."
   }
 }

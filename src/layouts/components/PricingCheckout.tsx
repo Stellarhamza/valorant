@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ZADEYO_PRODUCT_URL } from "@/config/videos";
 
 interface PricingCheckoutProps {
   planTitle: string;
@@ -23,8 +24,7 @@ export default function PricingCheckout({
 
   const handleCheckout = (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href =
-      "https://zadeyo.com/products/overwatch-2-novaxware";
+    window.location.href = ZADEYO_PRODUCT_URL;
   };
 
   return (

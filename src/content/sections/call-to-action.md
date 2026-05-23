@@ -1,9 +1,9 @@
 ---
 enable: true
-title: "Ready for <strong>Overwatch 2</strong> on PC?"
-description: "Read the guides on OverwatchCheats.com, then get the Novaxware build on Zadeyo—ESP, skeleton, head ESP, and soft aimbot."
+title: "Ready for <strong>Valorant cheats</strong> on PC?"
+description: "Read the guides on ValorantCheat.com, then get the Valorant build on Zadeyo—ESP, wallhack, aimbot, and triggerbot."
 button:
   enable: true
-  label: "Buy at Zadeyo"
-  link: "https://zadeyo.com/products/overwatch-2-novaxware"
+  label: "Buy Valorant Cheats"
+  link: "https://zadeyo.com/valorant-xray"
 ---

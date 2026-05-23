@@ -2,8 +2,9 @@
 import config from "@/config/config.json";
 import seoConfig from "@/config/seo.json";
 import theme from "@/config/theme.json";
+import { resolveCanonicalUrl } from "@/lib/seo";
+import { resolveOgImageMeta, truncateMetaDescription } from "@/lib/meta";
 import { plainify } from "@/lib/utils/textConverter";
-import { resolveCanonicalUrl, resolveOgImage, SITE_NAME } from "@/lib/seo";
 import Footer from "@/partials/Footer.astro";
 import Header from "@/partials/Header.astro";
 import "@/styles/main.css";
@@ -27,6 +28,11 @@ export interface Props {
   canonical?: string;
   structuredData?: Record<string, unknown>;
   ogType?: "website" | "article";
+  publishedTime?: string;
+  modifiedTime?: string;
+  ogImageAlt?: string;
+  articleTags?: string[];
+  articleAuthor?: string;
 }
 
 const {
@@ -39,42 +45,74 @@ const {
   canonical,
   structuredData,
   ogType = "website",
+  publishedTime,
+  modifiedTime,
+  ogImageAlt,
+  articleTags = [],
+  articleAuthor,
 } = Astro.props;
 
 const pageTitle = plainify(
   meta_title ? meta_title : title ? title : config.site.title,
 );
-const pageDescription = plainify(
-  description ? description : config.metadata.meta_description,
+const pageDescription = truncateMetaDescription(
+  plainify(description ? description : config.metadata.meta_description),
 );
 const canonicalUrl = resolveCanonicalUrl(Astro.url.pathname, canonical);
-const ogImageUrl = resolveOgImage(image);
+const ogImage = resolveOgImageMeta(image, ogImageAlt ?? pageTitle);
 const pageKeywords =
   keywords ?? seoConfig.default_keywords ?? undefined;
+const siteHost = new URL(seoConfig.site_url).hostname;
+const articleModified = modifiedTime ?? publishedTime;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- google tag manager -->
     {
       config.google_tag_manager.enable && (
         <GoogleTagmanager id={config.google_tag_manager.gtm_id} />
       )
     }
-    <link rel="icon" href={config.site.favicon} sizes="any" />
+
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=5"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <link rel="icon" href={config.site.favicon} type="image/png" sizes="any" />
     <link rel="shortcut icon" href={config.site.favicon} />
+    <link rel="apple-touch-icon" href={config.site.favicon} />
+    <link rel="home" href={resolveCanonicalUrl("/")} />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" hreflang="en" href={canonicalUrl} />
     <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml" />
+    <link
+      rel="sitemap"
+      type="application/xml"
+      title="Sitemap"
+      href="/sitemap-index.xml"
+    />
+
     <meta name="msapplication-TileColor" content="#86198F" />
     <meta name="theme-color" content="#86198F" />
     <meta name="generator" content={Astro.generator} />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="color-scheme" content="dark" />
 
-    <link rel="preconnect" href="https://bryjchknhsrmjdunnfer.supabase.co" crossorigin />
-    <link rel="preconnect" href="https://ooszazcwzmwhitdxwtom.supabase.co" crossorigin />
+    <link
+      rel="preconnect"
+      href="https://bryjchknhsrmjdunnfer.supabase.co"
+      crossorigin
+    />
+    <link
+      rel="preconnect"
+      href="https://ooszazcwzmwhitdxwtom.supabase.co"
+      crossorigin
+    />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
     {
@@ -90,40 +128,97 @@ const pageKeywords =
       })
     }
 
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=5"
-    />
-
     <title>{pageTitle}</title>
+    <meta name="title" content={pageTitle} />
 
-    {noindex ? (
-      <meta name="robots" content="noindex,nofollow" />
-    ) : (
-      <meta name="robots" content="index,follow,max-image-preview:large" />
-    )}
+    {
+      noindex ? (
+        <meta name="robots" content="noindex,nofollow" />
+      ) : (
+        <>
+          <meta
+            name="robots"
+            content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+          />
+          <meta
+            name="googlebot"
+            content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+          />
+          <meta
+            name="bingbot"
+            content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+          />
+        </>
+      )
+    }
+
     <meta name="description" content={pageDescription} />
     {pageKeywords && <meta name="keywords" content={pageKeywords} />}
-
     <meta name="author" content={config.metadata.meta_author} />
+    <meta name="publisher" content={seoConfig.brand_domain} />
     <meta name="application-name" content={seoConfig.brand_domain} />
+
+    <!-- Open Graph (Facebook, Discord, LinkedIn, iMessage) -->
     <meta property="og:site_name" content={seoConfig.brand_domain} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:image:alt" content={pageTitle} />
-    <meta property="og:locale" content="en_US" />
-    <meta name="twitter:card" content="summary_large_image" />
-  {
-    seoConfig.twitter_handle && (
-      <meta name="twitter:site" content={seoConfig.twitter_handle} />
-    )
-  }
+    <meta property="og:locale" content={seoConfig.locale ?? "en_US"} />
+    <meta property="og:image" content={ogImage.url} />
+    <meta property="og:image:secure_url" content={ogImage.url} />
+    <meta property="og:image:type" content={ogImage.type} />
+    <meta property="og:image:width" content={String(ogImage.width)} />
+    <meta property="og:image:height" content={String(ogImage.height)} />
+    <meta property="og:image:alt" content={ogImage.alt} />
+
+    {
+      ogType === "article" && publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )
+    }
+    {
+      ogType === "article" && articleModified && (
+        <meta property="article:modified_time" content={articleModified} />
+      )
+    }
+    {
+      ogType === "article" && (
+        <>
+          <meta property="article:section" content="Valorant Cheats" />
+          <meta
+            property="article:author"
+            content={articleAuthor ?? config.metadata.meta_author}
+          />
+          <meta property="og:updated_time" content={articleModified ?? publishedTime} />
+        </>
+      )
+    }
+    {
+      ogType === "article" &&
+        articleTags.map((tag) => <meta property="article:tag" content={tag} />)
+    }
+
+    <!-- Twitter / X Card -->
+    <meta
+      name="twitter:card"
+      content={seoConfig.twitter_card ?? "summary_large_image"}
+    />
+    {
+      seoConfig.twitter_handle && (
+        <>
+          <meta name="twitter:site" content={seoConfig.twitter_handle} />
+          <meta name="twitter:creator" content={seoConfig.twitter_handle} />
+        </>
+      )
+    }
+    <meta name="twitter:domain" content={siteHost} />
+    <meta name="twitter:url" content={canonicalUrl} />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
-    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image" content={ogImage.url} />
+    <meta name="twitter:image:alt" content={ogImage.alt} />
+
     {
       structuredData && (
         <script
@@ -133,17 +228,14 @@ const pageKeywords =
         />
       )
     }
-
   </head>
   <body>
-    {/* google tag manager noscript */}
     {
       config.google_tag_manager.enable && (
         <GoogleTagmanagerNoscript id={config.google_tag_manager.gtm_id} />
       )
     }
 
-    {/* <TwSizeIndicator /> */}
     <Header />
     <main id="main-content" class="overflow-x-hidden md:overflow-x-auto">
       <slot />

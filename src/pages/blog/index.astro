@@ -10,7 +10,8 @@ import dateFormat from "@/lib/utils/dateFormat";
 import { sortByDate } from "@/lib/utils/sortFunctions";
 import { markdownify } from "@/lib/utils/textConverter";
 import type { BlogIndex } from "@/types";
-import { SITE_URL } from "@/lib/seo";
+import seo from "@/config/seo.json";
+import { getBlogIndexStructuredData } from "@/lib/seo";
 
 const blogIndex = await getListPage("blogIndex", "-index");
 const pageData: BlogIndex = blogIndex.data;
@@ -22,36 +23,31 @@ const featuredPost =
   (featuredId ? allPosts.find((p) => p.id === featuredId) : undefined) ??
   allPosts[0];
 
-const blogIndexJsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "CollectionPage",
-      "@id": `${SITE_URL}/blog`,
-      url: `${SITE_URL}/blog`,
-      name: pageData.meta_title ?? pageData.title,
-      description: pageData.description,
-      isPartOf: { "@id": `${SITE_URL}/#website` },
-      inLanguage: "en-US",
-    },
-    {
-      "@type": "ItemList",
-      name: "Overwatch 2 cheat guides",
-      itemListElement: allPosts.map((p, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        url: `${SITE_URL}/blog/${p.id}`,
-        name: p.data.title,
-      })),
-    },
-  ],
-};
+const blogMetaTitle =
+  pageData.meta_title ?? seo.pages.blog.meta_title ?? pageData.title;
+const blogDescription =
+  pageData.description ?? seo.pages.blog.description;
+const blogKeywords =
+  pageData.keywords ?? seo.pages.blog.keywords ?? seo.default_keywords;
+
+const blogIndexJsonLd = getBlogIndexStructuredData(
+  blogMetaTitle,
+  blogDescription,
+  allPosts.map((post) => ({
+    id: post.id,
+    title: post.data.title,
+  })),
+);
 ---
 
 <Base
   {...pageData}
+  meta_title={blogMetaTitle}
+  description={blogDescription}
+  image={pageData.image ?? seo.default_og_image}
+  ogImageAlt={blogMetaTitle}
   canonical="/blog"
-  keywords="overwatch 2 cheats blog, overwatch esp guide, overwatch wallhack tutorial, zadeyo overwatch cheats"
+  keywords={blogKeywords}
   structuredData={blogIndexJsonLd}
 >
   <section class="section-ph pb-10 relative">

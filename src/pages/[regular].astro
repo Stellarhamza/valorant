@@ -3,6 +3,7 @@ import Base from "@/layouts/Base.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import PageHeader from "@/layouts/components/PageHeader.astro";
 import { getPageStructuredData } from "@/lib/seo";
+import seo from "@/config/seo.json";
 import { render } from "astro:content";
 
 // get static paths for all pages
@@ -21,17 +22,28 @@ export async function getStaticPaths() {
 }
 
 const { page } = Astro.props;
-const { title, description, meta_title } = page.data;
+const { title, description, meta_title, keywords, image } = page.data;
 const { Content } = await render(page);
 
 const pagePath = `/${page.id}`;
-const metaTitle = meta_title ?? title ?? "OverwatchCheats.com";
+const pageSeo =
+  page.id === "privacy-policy"
+    ? seo.pages.privacy
+    : page.id === "term-and-condition"
+      ? seo.pages.terms
+      : undefined;
+const metaTitle = meta_title ?? pageSeo?.meta_title ?? title ?? "ValorantCheat.com";
 const metaDescription =
-  description ?? "Information from OverwatchCheats.com.";
+  description ?? pageSeo?.description ?? "Information from ValorantCheat.com.";
 ---
 
 <Base
-  {...page.data}
+  title={title}
+  meta_title={metaTitle}
+  description={metaDescription}
+  keywords={keywords ?? pageSeo?.keywords}
+  image={image || seo.default_og_image}
+  ogImageAlt={metaTitle}
   canonical={pagePath}
   structuredData={getPageStructuredData(
     pagePath,

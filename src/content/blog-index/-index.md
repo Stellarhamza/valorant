@@ -1,19 +1,19 @@
 ---
-title: "Overwatch 2 Cheats & ESP Guides"
-meta_title: "Overwatch 2 Cheats Blog | Guides | OverwatchCheats.com"
-description: "Free Overwatch 2 ESP guides on OverwatchCheats.com: setup, features, settings, and patches. Buy access at Zadeyo.com when you are ready."
-keywords: "overwatch cheats blog, overwatch 2 esp guide, overwatch wallhack tutorial, overwatchcheats.com"
+title: "Valorant Cheats & Hacks Guides"
+meta_title: "Valorant Cheats Blog | Hacks, ESP, Aimbot Guides | ValorantCheat.com"
+description: "Valorant cheats guides on ValorantCheat.com: setup, ESP, wallhack, aimbot, triggerbot, settings, and patches. Buy access at Zadeyo.com when you are ready."
+keywords: "valorant cheats, valorant hacks, cheat valorant, cheat valo, valorant aimbot, hack valorant, valorant esp, valorant wallhack, best valorant cheats, cheats for valorant, buy valorant cheats, valorantcheat.com"
 image: "/images/blog/featured-cover.png"
 draft: false
 
 page_header:
-  title: "Overwatch 2 guides on <strong>OverwatchCheats.com</strong>"
-  featured_post: "overwatch-2-cheats-zadeyo-guide"
+  title: "Valorant cheats guides on <strong>ValorantCheat.com</strong>"
+  featured_post: "valorant-cheats-zadeyo-guide"
 
 featured_post:
   enable: true
 
 latest_posts:
   enable: true
-  title: "All Overwatch 2 guides"
+  title: "All Valorant cheats guides"
 ---

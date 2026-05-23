@@ -7,18 +7,25 @@ import PricingSection from "@/layouts/components/PricingSection.astro";
 import { getListPage } from "@/lib/contentParser.astro";
 import { markdownify } from "@/lib/utils/textConverter";
 import type { Pricing } from "@/types";
+import seo from "@/config/seo.json";
 import { getPageStructuredData } from "@/lib/seo";
 
 const pricing = await getListPage("pricing", "-index");
 const pricingData: Pricing = pricing.data;
 
-const metaTitle = pricingData.meta_title ?? pricingData.title ?? "Pricing";
+const metaTitle =
+  pricingData.meta_title ?? seo.pages.pricing.meta_title ?? pricingData.title ?? "Pricing";
 const metaDescription =
-  pricingData.description ?? "Overwatch 2 ESP pricing on OverwatchCheats.com.";
+  pricingData.description ?? seo.pages.pricing.description;
 ---
 
 <Base
-  {...pricingData}
+  title={pricingData.title}
+  meta_title={metaTitle}
+  description={metaDescription}
+  keywords={pricingData.keywords ?? seo.pages.pricing.keywords}
+  image={pricingData.image ?? seo.default_og_image}
+  ogImageAlt={metaTitle}
   canonical="/pricing"
   structuredData={getPageStructuredData(
     "/pricing",

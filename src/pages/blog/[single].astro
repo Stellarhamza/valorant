@@ -40,14 +40,30 @@ const articleJsonLd = getBlogArticleStructuredData({
   image: postData.image,
   author: postData.author,
   video: postVideo,
+  keywords: postData.keywords,
 });
+
+const publishedTime = postData.date?.toISOString();
+const modifiedTime = postData.date?.toISOString();
+const articleTitle =
+  postData.meta_title ?? postData.title;
+const articleDescription =
+  postData.description ?? articleTitle;
 ---
 
 <Base
-  {...postData}
+  title={postData.title}
+  meta_title={articleTitle}
+  description={articleDescription}
+  image={postData.image ?? "/images/og-image.png"}
+  ogImageAlt={articleTitle}
   canonical={`/blog/${post.id}`}
   keywords={postData.keywords}
   ogType="article"
+  publishedTime={publishedTime}
+  modifiedTime={modifiedTime}
+  articleTags={postData.tags ?? []}
+  articleAuthor={postData.author}
   structuredData={articleJsonLd}
 >
   <!-- Blog Single Hero -->

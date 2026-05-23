@@ -8,21 +8,28 @@ import GHLMeeting from "@/layouts/partials/GHLMeeting.astro";
 import { getListPage } from "@/lib/contentParser.astro";
 import DynamicIcon from "@/helpers/DynamicIcon";
 import type { Contact } from "@/types";
+import seo from "@/config/seo.json";
 import { getPageStructuredData } from "@/lib/seo";
 
 const contact = await getListPage("contact", "-index");
 const contactData: Contact = contact.data;
 
-const metaTitle = contactData.meta_title ?? contactData.title ?? "Contact";
+const metaTitle =
+  contactData.meta_title ?? seo.pages.contact.meta_title ?? contactData.title ?? "Contact";
 const metaDescription =
-  contactData.description ?? "Contact OverwatchCheats.com.";
+  contactData.description ?? seo.pages.contact.description;
 const {
   params: { contact_form_action: _unused },
 } = config;
 ---
 
 <Base
-  {...contactData}
+  title={contactData.title}
+  meta_title={metaTitle}
+  description={metaDescription}
+  keywords={contactData.keywords ?? seo.pages.contact.keywords}
+  image={contactData.image ?? seo.default_og_image}
+  ogImageAlt={metaTitle}
   canonical="/contact"
   structuredData={getPageStructuredData(
     "/contact",
@@ -218,13 +225,13 @@ const {
     }
 
     const subject = encodeURIComponent(
-      `OverwatchCheats.com contact — ${name}`,
+      `ValorantCheat.com contact — ${name}`,
     );
     const body = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\n${message}`,
     );
 
-    window.location.href = `mailto:support@overwatchcheats.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:support@valorantcheat.com?subject=${subject}&body=${body}`;
     showSuccess();
   });
 </script>

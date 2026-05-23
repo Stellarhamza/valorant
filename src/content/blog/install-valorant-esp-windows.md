@@ -1,31 +1,31 @@
 ---
-title: "How to Install Overwatch 2 ESP on Windows (Zadeyo Setup)"
-meta_title: "Install Overwatch 2 ESP on PC | Zadeyo Setup Guide"
-description: "Step-by-step: buy on zadeyo.com, download the loader, tune your overlay, and launch Overwatch 2. Windows PC only."
+title: "How to Install Valorant ESP on Windows (Zadeyo Setup)"
+meta_title: "Install Valorant Cheats on PC | ESP & Wallhack Setup Guide"
+description: "Step-by-step: buy Valorant cheats on zadeyo.com/valorant-xray, download the loader, tune your overlay, and launch Valorant. Windows PC only."
 date: 2026-05-08T10:00:00Z
 image: "/images/blog/post-2.png"
-author: "OverwatchCheats Team"
+author: "ValorantCheat Team"
 author_image: "/images/blog/author-1.png"
 tag: "Setup"
 read_time: "7 min read"
-categories: ["Overwatch 2"]
-tags: ["install", "zadeyo", "overwatch esp", "windows"]
-keywords: "how to install overwatch cheats, overwatch 2 esp setup, zadeyo install, overwatch wallhack pc"
+categories: ["Valorant"]
+tags: ["install", "zadeyo", "valorant esp", "valorant hacks", "windows"]
+keywords: "cheats for valorant, valorant esp, hack valorant, valorant wallhack, valorant hack esp, zadeyo install"
 draft: false
 ---
 
-This is the install path we give new buyers. Purchase happens on **[Zadeyo](https://zadeyo.com/products/overwatch-2-novaxware)**; this page is the written walkthrough so you are not guessing in Discord.
+This is the install path we give new buyers. Purchase happens on **[Zadeyo](https://zadeyo.com/valorant-xray)**; this page is the written walkthrough so you are not guessing in Discord.
 
 ## What you need
 
 - Windows 10 or 11 (64-bit)
-- Overwatch 2 installed through Battle.net
+- Valorant installed through the Riot Client
 - Admin rights to run the loader once
 - Your Zadeyo account email (same one you pay with)
 
-## Step 1 — Buy access on Zadeyo
+## Step 1 — Buy Valorant cheats on Zadeyo
 
-1. Open **https://zadeyo.com/products/overwatch-2-novaxware**
+1. Open **https://zadeyo.com/valorant-xray**
 2. Pick a plan (monthly or longer—whatever is listed live).
 3. Complete checkout and save your login.
 
@@ -34,10 +34,10 @@ You should land on a dashboard or email with a **download link**. If nothing arr
 ## Step 2 — Download and extract the loader
 
 1. Download the latest loader ZIP from Zadeyo.
-2. Extract to a simple folder, e.g. `C:\OW2ESP\` — avoid OneDrive-synced Desktop paths; they sometimes block overlays.
+2. Extract to a simple folder, e.g. `C:\ValoESP\` — avoid OneDrive-synced Desktop paths; they sometimes block overlays.
 3. If Windows SmartScreen pops up, that is normal for unsigned game tools. Only continue if you trust the file you got **from Zadeyo**, not a re-upload.
 
-## Step 3 — First launch (before Overwatch)
+## Step 3 — First launch (before Valorant)
 
 1. Run the loader **as administrator** once.
 2. Log in with your Zadeyo credentials.
@@ -51,20 +51,20 @@ You should land on a dashboard or email with a **download link**. If nothing arr
 
 Watch the video on this page: it shows a clean default layout—thin boxes, HP on the right, distance under the name.
 
-## Step 4 — Launch Overwatch 2
+## Step 4 — Launch Valorant
 
-1. Start OW2 from Battle.net (windowed borderless works well for most setups).
-2. Enter practice range or a quick play match.
+1. Start Valorant from the Riot Client (windowed borderless works well for most setups).
+2. Enter the shooting range or an unrated match.
 3. Press your toggle key once if you do not see boxes—some profiles start hidden.
 
-**Test in practice range first.** Shoot bots, verify boxes stick to red team, verify HP drops when you damage them.
+**Test in the shooting range first.** Verify boxes stick to enemies, verify HP drops when you damage them.
 
 ## Step 5 — Save a profile
 
 Name two profiles in the loader:
 
 - `ranked` — smaller boxes, muted colors
-- `qp` — slightly brighter if you stream clips
+- `unrated` — slightly brighter if you stream clips
 
 Save after each change. Zadeyo builds usually store profiles locally—you should not redo sliders every night.
 
@@ -79,20 +79,20 @@ Save after each change. Zadeyo builds usually store profiles locally—you shoul
 
 ## Patch day rules
 
-When Blizzard patches Overwatch 2:
+When Riot patches Valorant:
 
 1. **Do not** force the old loader on patch day morning.
-2. Check Zadeyo or our Discord for “safe / testing / offline” status.
+2. Check Zadeyo or their Discord for "safe / testing / offline" status.
 3. Download the new build when it is marked **live**.
 
 ## Security habits
 
-- Buy only on **zadeyo.com/products/overwatch-2-novaxware**
+- Buy only on **zadeyo.com/valorant-xray**
 - Do not share your Zadeyo login
-- Avoid “free cracked” copies—they are often malware
+- Avoid "free valorant cheats" or "valorant free hack" downloads from strangers—they are often malware
 
 ## Next read
 
-[What each ESP option does in-game](/blog/overwatch-esp-features-wallhack)
+[What each ESP and wallhack option does in-game](/blog/valorant-esp-wallhack-features)
 
 ---

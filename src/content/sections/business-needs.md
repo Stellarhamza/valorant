@@ -1,7 +1,7 @@
 ---
 enable: true
 badge: ""
-title: "What to look for in <strong>Overwatch 2 cheats</strong>"
+title: "What to look for in <strong>Valorant cheats</strong>"
 items:
   - image: "/images/esp-steps/01-readable-esp.svg"
     number: "01"
@@ -9,12 +9,12 @@ items:
     content: "Clear enemy boxes you can read in a fight. If the screen is messy, ESP does not help."
   - image: "/images/esp-steps/02-distance-hp.svg"
     number: "02"
-    title: "SKELETON & HEAD"
-    content: "Skeleton and head ESP make tracking easier than a single rectangle on every hero."
+    title: "WALLHACK & SKELETON"
+    content: "Valorant wallhack and skeleton ESP make tracking easier than a single rectangle on every agent."
   - image: "/images/esp-steps/03-settings.svg"
     number: "03"
-    title: "SOFT AIM"
-    content: "Soft aimbot with sliders you control—not a locked-on rage mode."
+    title: "AIMBOT & TRIGGERBOT"
+    content: "Valorant aimbot and triggerbot with sliders you control—not a locked-on rage mode."
   - image: "/images/esp-steps/04-toggle.svg"
     number: "04"
     title: "HP & DISTANCE"
@@ -22,5 +22,5 @@ items:
   - image: "/images/esp-steps/05-patch-support.svg"
     number: "05"
     title: "UNDETECTED"
-    content: "Buy from Zadeyo and check their status after OW2 patches—do not queue blind."
+    content: "Buy paid Valorant cheats from Zadeyo and check their status after Riot patches—do not queue blind."
 ---
