@@ -84,9 +84,31 @@ const articleModified = modifiedTime ?? publishedTime;
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="format-detection" content="telephone=no" />
 
-    <link rel="icon" href={config.site.favicon} type="image/png" sizes="any" />
-    <link rel="shortcut icon" href={config.site.favicon} />
-    <link rel="apple-touch-icon" href={config.site.favicon} />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon-32.png"
+      sizes="32x32"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon-16.png"
+      sizes="16x16"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon-48.png"
+      sizes="48x48"
+    />
+    <link
+      rel="apple-touch-icon"
+      href={config.site.apple_touch_icon ?? "/images/apple-touch-icon.png"}
+      sizes="180x180"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="home" href={resolveCanonicalUrl("/")} />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" hreflang="en" href={canonicalUrl} />
@@ -104,8 +126,9 @@ const articleModified = modifiedTime ?? publishedTime;
       href="/rss.xml"
     />
 
-    <meta name="msapplication-TileColor" content="#86198F" />
-    <meta name="theme-color" content="#86198F" />
+    <meta name="msapplication-TileColor" content="#D946EF" />
+    <meta name="msapplication-TileImage" content="/images/favicon-512.png" />
+    <meta name="theme-color" content="#D946EF" />
     <meta name="generator" content={Astro.generator} />
     <meta name="color-scheme" content="dark" />
 

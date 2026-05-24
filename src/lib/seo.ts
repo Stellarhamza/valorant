@@ -50,9 +50,9 @@ const organizationNode = {
   url: SITE_URL,
   logo: {
     "@type": "ImageObject",
-    url: `${SITE_URL}/images/logo.svg`,
-    width: 180,
-    height: 40,
+    url: `${SITE_URL}/images/favicon-512.png`,
+    width: 512,
+    height: 512,
   },
   email: config.params.footer_email,
   description: config.metadata.meta_description,

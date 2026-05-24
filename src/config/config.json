@@ -4,8 +4,11 @@
     "base_url": "https://valorantcheat.com",
     "base_path": "/",
     "trailing_slash": false,
-    "favicon": "/images/favicon.png",
+    "favicon": "/images/favicon-32.png",
+    "apple_touch_icon": "/images/apple-touch-icon.png",
+    "site_icon": "/images/favicon-512.png",
     "logo": "/images/logo.svg",
+    "logo_mark": "/images/logo-mark.svg",
     "logo_width": "160",
     "logo_height": "45",
     "logo_text": "Zadeyo"

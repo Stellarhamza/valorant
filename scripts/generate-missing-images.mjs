@@ -83,15 +83,51 @@ function embedCardSvg(title, subtitle, w, h) {
 </svg>`);
 }
 
+async function generateFavicons() {
+  const logoMark = path.join(imagesDir, "logo-mark.svg");
+  if (!fs.existsSync(logoMark)) {
+    console.warn("Skip favicons (missing logo-mark.svg)");
+    return;
+  }
+
+  const sizes = [
+    { name: "favicon-16.png", size: 16 },
+    { name: "favicon-32.png", size: 32 },
+    { name: "favicon-48.png", size: 48 },
+    { name: "apple-touch-icon.png", size: 180 },
+    { name: "favicon-192.png", size: 192 },
+    { name: "favicon-512.png", size: 512 },
+  ];
+
+  for (const { name, size } of sizes) {
+    await sharp(logoMark)
+      .resize(size, size)
+      .png({ compressionLevel: 9, adaptiveFiltering: true })
+      .toFile(path.join(imagesDir, name));
+  }
+
+  // Legacy path used in config + ImageMod
+  await sharp(logoMark)
+    .resize(32, 32)
+    .png({ compressionLevel: 9, adaptiveFiltering: true })
+    .toFile(path.join(imagesDir, "favicon.png"));
+
+  // Browsers and Google crawl /favicon.ico by default
+  await sharp(logoMark)
+    .resize(48, 48)
+    .png({ compressionLevel: 9, adaptiveFiltering: true })
+    .toFile(path.join(root, "public", "favicon.ico"));
+}
+
 async function main() {
   const jobs = [
+    generateFavicons(),
     writeFromSvg(
       embedCardSvg("Valorant Cheats & Hacks", "ESP · Aimbot · Wallhack · ValorantCheat.com", 1200, 630),
       path.join(imagesDir, "og-image.png"),
       1200,
       630,
     ),
-    writeFromSvg(labelSvg("VC", 64, 64, 28), path.join(imagesDir, "favicon.png"), 64, 64),
     writeFromSvg(labelSvg("Valorant Cheats", 1200, 700, 42), path.join(imagesDir, "about_hero.png"), 1200, 700),
     writeFromSvg(labelSvg("ESP overlay", 1100, 650, 40), path.join(imagesDir, "automark_dashboard.png"), 1100, 650),
     writeFromSvg(labelSvg("Guide", 400, 250, 28), path.join(imagesDir, "ebook.png"), 400, 250),
